@@ -22,15 +22,16 @@ public class HibernateCRUD {
 		Transaction tr = session.beginTransaction();
 
 		// add student data
-		/*
-		 * obj.createStudent(session);
-		 * 
-		 * // retrive all student obj.getAllStudent(session);
-		 * 
-		 * // update student data obj.updateStudent(session);
-		 * 
-		 * // delete student data obj.deleteStudent(session);
-		 */
+		obj.createStudent(session);
+
+		// retrive all student
+		obj.getAllStudent(session);
+
+		// update student data
+		obj.updateStudent(session);
+
+		// delete student data
+		obj.deleteStudent(session);
 
 		ConditionalRetrive conret = new ConditionalRetrive();
 		Criteria cr = session.createCriteria(Student.class);
