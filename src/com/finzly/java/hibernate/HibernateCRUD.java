@@ -1,5 +1,6 @@
 package com.finzly.java.hibernate;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -21,17 +22,24 @@ public class HibernateCRUD {
 		Transaction tr = session.beginTransaction();
 
 		// add student data
-		obj.createStudent(session);
+		/*
+		 * obj.createStudent(session);
+		 * 
+		 * // retrive all student obj.getAllStudent(session);
+		 * 
+		 * // update student data obj.updateStudent(session);
+		 * 
+		 * // delete student data obj.deleteStudent(session);
+		 */
 
-		// retrive all student
-		obj.getAllStudent(session);
+		ConditionalRetrive conret = new ConditionalRetrive();
+		Criteria cr = session.createCriteria(Student.class);
 
-		// update student data
-		obj.updateStudent(session);
-
-		// delete student data
-		obj.deleteStudent(session);
-
+		conret.getStudentById(cr);
+		conret.getStudentByName(cr);
+		conret.getStudentGtId(cr);
+		conret.getStudentLtId(cr);
+		conret.getStudentLTEId(cr);
 		tr.commit();
 		session.close();
 		sf.close();
